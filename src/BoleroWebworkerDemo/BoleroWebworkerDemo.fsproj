@@ -19,8 +19,7 @@
     <PackageReference Include="Bolero" Version="0.22.43" />
     <PackageReference Include="Bolero.Build" Version="0.22.43" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.5" />
-    <PackageReference Include="SpawnDev.BlazorJS" Version="2.1.8" />
-    <PackageReference Include="SpawnDev.BlazorJS.WebWorkers" Version="2.1.8" />
+    <PackageReference Include="SpawnDev.BlazorJS.WebWorkers" Version="2.1.13" />
     <PackageReference Include="FSharp.SystemTextJson" Version="1.1.23" />
   </ItemGroup>
 </Project>

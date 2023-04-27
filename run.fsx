@@ -16,10 +16,11 @@ let runCommand command captureStandardOutput =
 
 let runCmd command = runCommand command false |> fst
 
-let getSourceDirectories() =
-  let srcDirs = Directory.GetDirectories("src") |> Array.toList
+let getDirtyDirectories() =
+  let getDirs dir = Directory.GetDirectories dir |> Array.toList
+  let projectDirs = getDirs "src"
   let combineWith dirs path = dirs |> List.map (fun dir -> Path.Combine(path, dir))
-  srcDirs |> List.collect (combineWith ["bin"; "obj"])
+  projectDirs |> List.collect (combineWith ["bin"; "obj"]) |> List.filter Directory.Exists
 
 let rec deleteFolder dir =
   let files = Directory.GetFiles dir |> Array.toList
@@ -28,7 +29,7 @@ let rec deleteFolder dir =
   dirs |> List.iter (fun d -> deleteFolder d; Directory.Delete d)
 
 let clean () =
-  let dirs = getSourceDirectories()
+  let dirs = getDirtyDirectories()
   dirs |> List.iter (fun d -> deleteFolder d; Directory.Delete d)
   true
 

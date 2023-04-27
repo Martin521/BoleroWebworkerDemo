@@ -50,7 +50,7 @@ let update message model =
         | Some computer ->
             {model with buttonStates = model.buttonStates.Add(i, On "00")},
             Cmd.OfAsync.either computer ci ProcessResult Error
-    | ProcessResult(ComputeOutput(i, s)) -> {model with buttonStates = model.buttonStates.Add(i, Off $"{s}")}, Cmd.none
+    | ProcessResult(ComputeOutput(i, s, test)) -> {model with buttonStates = model.buttonStates.Add(i, Off $"{s}")}, Cmd.none
     | Error exn ->
         printfn $"{exn.Message}"
         model, Cmd.none
